@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Ostwest_Shop.Server.props" />
+</Project>

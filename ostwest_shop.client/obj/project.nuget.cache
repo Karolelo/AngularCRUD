@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "SsPZ/a1ZCY0=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop\\ostwest_shop.client\\ostwest_shop.client.esproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1012",
+      "level": "Error",
+      "message": "Platform version is not present for one or more target frameworks, even though they have specified a platform: net6.0-none"
+    }
+  ]
+}
