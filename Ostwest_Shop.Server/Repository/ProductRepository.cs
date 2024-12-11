@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ostwest_Shop.Server.Interfaces;
 using Ostwest_Shop.Server.Models;
+using Ostwest_Shop.Server.DbContext;
 
 namespace Ostwest_Shop.Server.Repository;
 
@@ -27,18 +28,19 @@ public class ProductRepository : IProductRepository
     {
         product.Categories = categories;
         _context.Add(product);
+        _context.SaveChanges(); 
     }
     
     public void UpdateProduct(Product product, List<Category> categories)
     {
         product.Categories = categories;
         _context.Update(product);
+        _context.SaveChanges();
     }
 
     public void DeleteProduct(Product product)
     {
         _context.Remove(product);
+        _context.SaveChanges();
     }
-    
-    
 }
