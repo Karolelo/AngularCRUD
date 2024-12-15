@@ -36,11 +36,21 @@ public class ProductController : ControllerBase
     [HttpPost]
     public ActionResult<Product> CreateProduct([FromBody] CreateProductDto createProductDto)
     {
-        _productRepository.CreateNewProduct(createProductDto.Product, createProductDto.Categories);
+        _productRepository.CreateNewProduct(createProductDto.Product);
         return CreatedAtAction(nameof(GetProduct), new { id = createProductDto.Product.Id }, createProductDto.Product);
     }
 
-    [HttpDelete]
+    [HttpPut("id")]
+    public ActionResult<Product> UpdateProduct( int id,[FromBody] Product product)
+    {
+        if (id != product.Id)
+        {
+            return BadRequest();
+        }
+        _productRepository.UpdateProduct(product);
+        return NoContent();
+    }
+    [HttpDelete("{id}")]
     public ActionResult<Product> DeleteProduct(int id)
     {
         var product = _productRepository.GetById(id);
@@ -51,4 +61,5 @@ public class ProductController : ControllerBase
         _productRepository.DeleteProduct(product);
         return Ok(product);
     }
+    
 }

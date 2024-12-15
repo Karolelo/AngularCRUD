@@ -7,7 +7,7 @@ public interface IProductRepository
     Product GetById(int id);
     
     IEnumerable<Product> GetAll();
-    void CreateNewProduct(Product product, List<Category> categories);
-    public void UpdateProduct(Product product, List<Category> categories);
+    void CreateNewProduct(Product product);
+    public void UpdateProduct(Product product);
     public void DeleteProduct(Product product);
 }

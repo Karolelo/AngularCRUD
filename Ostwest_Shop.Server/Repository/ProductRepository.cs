@@ -24,16 +24,14 @@ public class ProductRepository : IProductRepository
         return _context.Set<Product>().ToList();
     }
 
-    public void CreateNewProduct(Product product, List<Category> categories)
+    public void CreateNewProduct(Product product)
     {
-        product.Categories = categories;
         _context.Add(product);
         _context.SaveChanges(); 
     }
     
-    public void UpdateProduct(Product product, List<Category> categories)
+    public void UpdateProduct(Product product)
     {
-        product.Categories = categories;
         _context.Update(product);
         _context.SaveChanges();
     }
