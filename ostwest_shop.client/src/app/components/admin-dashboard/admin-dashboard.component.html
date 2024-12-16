@@ -23,6 +23,7 @@
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
         <td><img [src]="product.imgSourcePath" [alt]="product.name" width="50"></td>
+        <td>{{product.magazine.quanity}}</td>
         <td>
           <ul class="category-list">
             <li *ngFor="let category of product.categories">{{ category.name }}</li>

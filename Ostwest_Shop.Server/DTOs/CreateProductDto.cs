@@ -4,5 +4,12 @@ namespace Ostwest_Shop.Server.DTOs;
 
 public class CreateProductDto
 {
-    public Product Product { get; set; }
+        public string Name { get; set; } = null!;
+
+        public decimal Price { get; set; }
+
+        public byte[]? Img { get; set; }
+
+        public MagazineDto? Magazine { get; set; } 
+    
 }

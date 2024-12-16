@@ -63,3 +63,9 @@ form button[type="button"] {
   background-color: #dc3545;
   color: white;
 }
+
+small {
+  color: red;
+  font-size: 0.875em;
+}
+

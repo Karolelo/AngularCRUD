@@ -6,8 +6,9 @@ public interface IProductRepository
 {
     Product GetById(int id);
     
-    IEnumerable<Product> GetAll();
+    IEnumerable<Product> GetAll(bool includeMagazine,bool includeCategory);
     void CreateNewProduct(Product product);
-    public void UpdateProduct(Product product);
-    public void DeleteProduct(Product product);
+    void UpdateProduct(Product product);
+    void DeleteProduct(Product product);
+    
 }

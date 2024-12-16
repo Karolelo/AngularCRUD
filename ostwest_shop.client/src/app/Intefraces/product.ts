@@ -6,6 +6,10 @@ export interface Product {
   name: string;
   price: number;
   imgSourcePath: string;
+  magazine: {
+    productId: number;
+    quanity:number;
+  }
   categories: Category[];
 
 }

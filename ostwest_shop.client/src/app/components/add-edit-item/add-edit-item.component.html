@@ -1,15 +1,30 @@
 <body>
 <div class="edit-add-panel">
   <h2>Formularz Dodawania/Edytowania Przedmiotu</h2>
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" #form="ngForm">
+
     <label for="productName">Nazwa:</label>
     <input type="text" id="productName" formControlName="productName" required>
+    <div *ngIf="productForm.get('productName')?.touched && productForm.get('productName')?.errors">
+      <small *ngIf="productForm.get('productName')?.errors?.['required']">Nazwa jest wymagana.</small>
+      <small *ngIf="productForm.get('productName')?.errors?.['minlength']">Nazwa musi mieć co najmniej 3 znaki.</small>
+    </div>
 
     <label for="productPrice">Cena:</label>
     <input type="number" id="productPrice" formControlName="productPrice" required>
+    <div *ngIf="productForm.get('productPrice')?.touched && productForm.get('productPrice')?.errors">
+      <small *ngIf="productForm.get('productPrice')?.errors?.['required']">Cena jest wymagana.</small>
+      <small *ngIf="productForm.get('productPrice')?.errors?.['min']">Cena musi być większa lub równa 0.</small>
+    </div>
+
 
     <label for="productQuantity">Ilość:</label>
     <input type="number" id="productQuantity" formControlName="productQuantity" required>
+    <div *ngIf="productForm.get('productQuantity')?.touched && productForm.get('productQuantity')?.errors">
+      <small *ngIf="productForm.get('productQuantity')?.errors?.['required']">Ilość jest wymagana.</small>
+      <small *ngIf="productForm.get('productQuantity')?.errors?.['min']">Ilość musi być większa lub równa 0.</small>
+    </div>
+
 
     <label for="productCategory">Kategoria:</label>
     <select id="productCategory" formControlName="productCategory" multiple required>
@@ -17,23 +32,12 @@
       <option value="category2">Kategoria 2</option>
       <option value="category3">Kategoria 3</option>
     </select>
+    <div *ngIf="productForm.get('productCategory')?.touched && productForm.get('productCategory')?.errors">
+      <small *ngIf="productForm.get('productCategory')?.errors?.['required']">Kategoria jest wymagana.</small>
+    </div>
 
-    <button type="submit">Zapisz</button>
-    <button type="button" onclick="window.location.href='adminPanel.html'">Anuluj</button>
+    <button type="submit" [disabled]="productForm.invalid">Zapisz</button>
+    <button type="button" (click)="navigate()">Anuluj</button>
   </form>
 </div>
 </body>
-<!--<script>
-  const maxElement = 3;
-  const elements = document.getElementById("productCategory");
-
-  elements.addEventListener("change", function(event) {
-    const selectedOptions = Array.from(this.selectedOptions);
-    const selectedCount = selectedOptions.length;
-
-    if (selectedCount > maxElement) {
-      alert("Nie można wybrać więcej niż 3 kategori produtków");
-      selectedOptions[selectedCount - 1].selected = false;
-    }
-  });
-</script>-->
