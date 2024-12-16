@@ -1,0 +1,15 @@
+﻿services:
+  ostwest_shop.server:
+    image: ostwest_shop.server
+    build:
+      context: .
+      dockerfile: Ostwest_Shop.Server/Dockerfile  
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Haslo1234*"   
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"  
+  

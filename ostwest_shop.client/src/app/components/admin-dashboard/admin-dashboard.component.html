@@ -1,0 +1,46 @@
+<body>
+<div class="admin-panel">
+  <div id="filter-box">
+    <label>
+      <input type="text" placeholder="ID produktu" > <!--(input)="searchProduct($event.target.value)-->
+    </label>
+    <button (click)="navigate()" >Dodaj nowy przedmiot</button>
+  </div>
+  <div id="product-admin-view-list">
+    <table id="product-list">
+      <thead>
+      <tr>
+        <th>Nazwa</th>
+        <th>Cena</th>
+        <th>Obrazek</th>
+        <th>Ilość</th>
+        <th>Kategoria</th>
+        <th>Akcje</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of Products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td><img [src]="product.imgSourcePath" [alt]="product.name" width="50"></td>
+        <td>
+          <ul class="category-list">
+            <li *ngFor="let category of product.categories">{{ category.name }}</li>
+          </ul>
+        </td>
+        <td>
+          <div class="small-button-panel">
+              <span id="delete-item" class="icon" (click)="onDelete(product)" >
+                <i class="fas fa-trash"></i>
+              </span>
+            <span id="edit-item" class="icon" (click)="onEdit(product)">
+                <i class="fas fa-pencil-alt"></i>
+              </span>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
