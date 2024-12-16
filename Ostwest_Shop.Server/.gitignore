@@ -1,0 +1,23 @@
+﻿# ASP.NET / .NET
+bin/
+obj/
+*.user
+*.suo
+*.log
+*.lock.json
+*.dll
+*.pdb
+# Rider / JetBrains IDE
+.idea/
+*.sln.iml
+*.sln
+*.info
+# Node.js / Angular
+node_modules/
+dist/
+npm-debug.log*
+
+# Systemowe pliki
+*.DS_Store
+Thumbs.db
+desktop.ini
