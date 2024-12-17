@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Ostwest_Shop.Server.DbContext;
 using Ostwest_Shop.Server.Interfaces;
+using Ostwest_Shop.Server.Models;
 using Ostwest_Shop.Server.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IRepository<Product>, EntityFrameworkRepository<Product>>();
+builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<DbContext, MyDbContext>();
 builder.Services.AddScoped<IMagazineRepository, MagazineRepository>();
 builder.Services.AddDbContext<MyDbContext>(e=>e.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

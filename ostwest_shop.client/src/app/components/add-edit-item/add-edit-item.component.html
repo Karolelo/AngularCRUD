@@ -32,12 +32,13 @@
       <option value="category2">Kategoria 2</option>
       <option value="category3">Kategoria 3</option>
     </select>
+    <button type="button" (click)="navigate('categories')">Dodaj nową kategorię</button>
     <div *ngIf="productForm.get('productCategory')?.touched && productForm.get('productCategory')?.errors">
       <small *ngIf="productForm.get('productCategory')?.errors?.['required']">Kategoria jest wymagana.</small>
     </div>
 
     <button type="submit" [disabled]="productForm.invalid">Zapisz</button>
-    <button type="button" (click)="navigate()">Anuluj</button>
+    <button type="button" (click)="navigate('dashboard')">Anuluj</button>
   </form>
 </div>
 </body>

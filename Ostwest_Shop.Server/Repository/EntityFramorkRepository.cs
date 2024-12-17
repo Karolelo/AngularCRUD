@@ -37,5 +37,6 @@ public class EntityFrameworkRepository<T> : IRepository<T> where T : class
     public void Delete(T entity)
     {
         _dbSet.Remove(entity);
+        _context.SaveChanges();
     }
 }

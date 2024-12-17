@@ -9,11 +9,13 @@ namespace Ostwest_Shop.Server.Controllers;
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-    IProductRepository _productRepository;
+    private readonly IProductRepository _productRepository;
+    private readonly IMagazineRepository _magazineRepository;
     
-    public ProductController(IProductRepository productRepository)
+    public ProductController(IProductRepository productRepository, IMagazineRepository magazineRepository)
     {
         _productRepository = productRepository;
+        _magazineRepository = magazineRepository;
     }
     
     [HttpGet]
@@ -30,14 +32,34 @@ public class ProductController : ControllerBase
     [HttpGet("all")]
     public ActionResult<IEnumerable<Product>> GetAllProducts()
     {
-        return Ok(_productRepository.GetAll());
+        return Ok(_productRepository.GetAll(includeMagazine: true,includeCategory: true));
     }
     
     [HttpPost]
     public ActionResult<Product> CreateProduct([FromBody] CreateProductDto createProductDto)
     {
-        _productRepository.CreateNewProduct(createProductDto.Product);
-        return CreatedAtAction(nameof(GetProduct), new { id = createProductDto.Product.Id }, createProductDto.Product);
+        Product product = new Product()
+        {
+            Name = createProductDto.Name,
+            Price = createProductDto.Price,
+            Img = createProductDto.Img
+        };
+        
+        _productRepository.CreateNewProduct(product);
+        
+        if (createProductDto.Magazine != null)
+        {
+            Magazine magazine = new Magazine()
+            {
+                ProductId = product.Id, 
+                Quanity = createProductDto.Magazine.Quantity
+            };
+
+            
+            _magazineRepository.CreateMagazine(magazine.ProductId, magazine.Quanity);
+        }
+        
+        return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
     }
 
     [HttpPut("id")]
@@ -58,6 +80,7 @@ public class ProductController : ControllerBase
         {
             return NotFound(); 
         }
+        _magazineRepository.DeleteMagazine(id);
         _productRepository.DeleteProduct(product);
         return Ok(product);
     }

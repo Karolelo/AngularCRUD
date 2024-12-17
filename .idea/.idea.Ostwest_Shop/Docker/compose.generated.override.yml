@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  ostwest_shop.server:
+    build:
+      context: "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop"
+      dockerfile: "Ostwest_Shop.Server/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Ostwest_Shop.Server.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "ostwest_shop.server:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop\\Ostwest_Shop.Server:/app:rw"
+    - "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop:/src:rw"
+    - "C:\\Users\\Kuba\\.nuget\\packages:/home/app/.nuget/packages"
+    working_dir: "/app"

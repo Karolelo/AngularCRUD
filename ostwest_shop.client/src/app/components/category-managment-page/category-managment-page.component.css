@@ -1,0 +1,66 @@
+/* Styl dla category-managment-panel */
+.category-managment-panel {
+  background-color: #f8f9fa; /* Jasne tło, odpowiada stylistyce dashboardu */
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 15px; /* Zaokrąglone rogi */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+  width: 80%; /* Ustaw szerokość panelu */
+  max-width: 1200px; /* Maksymalna szerokość */
+}
+
+/* Styl dla edit-add-panel */
+.edit-add-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Elementy wyrównane do lewej */
+  gap: 10px; /* Odstęp między elementami */
+}
+
+.edit-add-panel input[type="text"] {
+  width: 100%; /* Input zajmuje całość dostępnej szerokości */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.edit-add-panel button {
+  align-self: flex-end; /* Wyrównanie przycisku do prawej */
+  padding: 10px 20px;
+  background-color: #007bff; /* Kolor przycisku */
+  border: none;
+  color: #fff;
+  border-radius: 8px; /* Zaokrąglenie */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-add-panel button:hover {
+  background-color: #0056b3; /* Podświetlenie przycisku */
+}
+
+/* Styl dla app-category-list (jeśli potrzeba) */
+app-category-list {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e9ecef;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dodaj opcje table, jeśli panel ich użyje */
+.category-managment-panel table {
+  border-radius: 10px; /* Zaokrąglone rogi w tabeli */
+  overflow: hidden; /* Daje lepszy efekt dla border-radius */
+  border: 1px solid #ddd;
+}
+
+/* Ogólny styl dla dashboardu */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f1f3f6; /* Tło jak typowy dashboard */
+  margin: 0;
+  padding: 0;
+  color: #333; /* Ciemnoszary tekst */
+}

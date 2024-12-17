@@ -7,4 +7,9 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\ostwest_shop.client\browser\</BuildOutputFolder>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\components\category-managment-page\CategoryComponents\" />
+    <Folder Include="src\app\components\category-managment-page\CategoryService\" />
+    <Folder Include="src\app\Intefraces\" />
+  </ItemGroup>
 </Project>

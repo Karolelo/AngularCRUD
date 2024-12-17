@@ -19,8 +19,16 @@ public class ProductRepository : IProductRepository
         return _context.Set<Product>().Find(id) ?? throw new KeyNotFoundException("Product not found.");
     }
 
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<Product> GetAll(bool includeMagazine,bool includeCategories)
     {
+        if (includeMagazine)
+        {
+            if (includeCategories)
+            {
+                return _context.Set<Product>().Include(p => p.Magazine).Include(p => p.Categories).ToList();
+            }
+            return _context.Set<Product>().Include(p =>p.Magazine).ToList();   
+        }
         return _context.Set<Product>().ToList();
     }
 

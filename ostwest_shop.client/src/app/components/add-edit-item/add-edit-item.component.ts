@@ -48,8 +48,8 @@ export class AddEditItemComponent implements OnInit {
     }
   }
 
-  navigate (){
-    this.router.navigate(['dashboard']);
+  navigate (path: string){
+    this.router.navigate([path]);
   }
   onSubmit(): void {
     if (this.productForm.valid) {

@@ -1,0 +1,6 @@
+<ul *ngFor="let category of Categories">
+    <app-category-item
+      [category]="category"
+      (newDeleteCategory)="removeCategory($event)">
+    </app-category-item>
+</ul>
