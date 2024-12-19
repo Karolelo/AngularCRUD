@@ -25,7 +25,9 @@ public class ProductRepository : IProductRepository
         {
             if (includeCategories)
             {
-                return _context.Set<Product>().Include(p => p.Magazine).Include(p => p.Categories).ToList();
+                return _context.Set<Product>().
+                    Include(p => p.Magazine)
+                    .Include(p => p.Categories).ToList();
             }
             return _context.Set<Product>().Include(p =>p.Magazine).ToList();   
         }
@@ -46,7 +48,12 @@ public class ProductRepository : IProductRepository
 
     public void DeleteProduct(Product product)
     {
-        _context.Remove(product);
+        var deleteProduct = _context.Set<Product>()
+            .Include(e=>e.Magazine)
+            .Include(e=>e.Categories)
+            .FirstOrDefault(p => p.Id == product.Id);
+        
+        _context.Remove(deleteProduct);
         _context.SaveChanges();
     }
 }

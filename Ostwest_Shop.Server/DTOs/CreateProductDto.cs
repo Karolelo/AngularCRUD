@@ -11,5 +11,7 @@ public class CreateProductDto
         public byte[]? Img { get; set; }
 
         public MagazineDto? Magazine { get; set; } 
+        
+        public List<int>? CategoriesIDs { get; set; }
     
 }

@@ -3,6 +3,8 @@ import {Product} from '../../Intefraces/product';
 import { Router } from '@angular/router';
 import {ProductsService} from './ProductService/products.service';
 import {dataSharingService} from './DataSharingService/data-sharing.service';
+import {Category} from '../../Intefraces/category';
+import {CategoryService} from '../category-managment-page/CategoryService/category.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,6 +14,7 @@ import {dataSharingService} from './DataSharingService/data-sharing.service';
 })
 export class AdminDashboardComponent implements OnInit{
   Products: Product[] = [];
+  Categories: Category[] = [];
   router = inject(Router);
   constructor(private productsService: ProductsService,private dataSharingService:  dataSharingService) {}
   ngOnInit() {
@@ -21,6 +24,7 @@ export class AdminDashboardComponent implements OnInit{
         console.log(this.Products);
       }
     );
+
   }
   navigate(){
     this.router.navigate(['dashboard/add-edit-item']);

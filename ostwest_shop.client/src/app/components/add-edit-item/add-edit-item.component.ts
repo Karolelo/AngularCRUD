@@ -4,6 +4,8 @@ import { dataSharingService } from '../admin-dashboard/DataSharingService/data-s
 import { Product } from '../../Intefraces/product';
 import { Router } from '@angular/router';
 import {ProductsService} from '../admin-dashboard/ProductService/products.service';
+import {Category} from '../../Intefraces/category';
+import {CategoryService} from '../category-managment-page/CategoryService/category.service';
 @Component({
   selector: 'app-add-edit-item',
   standalone: false,
@@ -15,9 +17,11 @@ export class AddEditItemComponent implements OnInit {
   productForm!:FormGroup;
   product: Product | null = null;
   router= inject(Router);
+  Categories!: Category[];
   constructor(
     private dataSharingService: dataSharingService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private categoryService: CategoryService
   ) {
   }
 
@@ -46,19 +50,24 @@ export class AddEditItemComponent implements OnInit {
           updateOn: 'blur'
         });
     }
+
+    this.categoryService.getCategories().subscribe(category => {this.Categories=category});
+
   }
 
   navigate (path: string){
     this.router.navigate([path]);
   }
   onSubmit(): void {
+
     if (this.productForm.valid) {
       const productData = {
         name: this.productForm.value.productName,
         price: this.productForm.value.productPrice,
         magazine: {
           quantity: this.productForm.value.productQuantity
-        }
+        },
+        categoriesIDs: this.productForm.value.productCategory
       }
       this.productService.createProduct(productData).subscribe({
         next: (response) => {

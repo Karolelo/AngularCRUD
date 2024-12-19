@@ -1,4 +1,5 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,Input } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {Category} from '../../../../Intefraces/category';
 import {CategoryService} from '../../CategoryService/category.service';
 
@@ -9,20 +10,23 @@ import {CategoryService} from '../../CategoryService/category.service';
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.css'
 })
-export class CategoryListComponent implements OnInit{
+export class CategoryListComponent implements OnInit {
+  private categoriesSubject = new BehaviorSubject<Category[]>([]);
 
-  Categories!: Category[];
-  constructor(private categoryService: CategoryService) {
-  }
-  ngOnInit() {
-    this.categoryService.getCategories().subscribe(category => {
-      this.Categories = category;
-      console.log(category)})
+  categories$ = this.categoriesSubject.asObservable();
+
+  constructor(private categoryService: CategoryService) {}
+
+  ngOnInit(): void {
+    this.categoryService.categories$.subscribe((categories) => {
+      this.categoriesSubject.next(categories);
+    })
   }
 
-  removeCategory(id: number) {
+  removeCategory(id: number): void {
     this.categoryService.deleteCategory(id).subscribe(() => {
-      this.Categories = this.Categories.filter(category => category.id !== id);
+      const currentCategories = this.categoriesSubject.value.filter((category) => category.id !== id);
+      this.categoriesSubject.next(currentCategories);
     });
   }
 }

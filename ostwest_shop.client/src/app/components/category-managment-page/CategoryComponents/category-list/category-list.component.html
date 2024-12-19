@@ -1,4 +1,4 @@
-<ul *ngFor="let category of Categories">
+<ul *ngFor="let category of (categories$ | async)">
     <app-category-item
       [category]="category"
       (newDeleteCategory)="removeCategory($event)">

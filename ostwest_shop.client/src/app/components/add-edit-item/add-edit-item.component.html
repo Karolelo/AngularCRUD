@@ -28,9 +28,9 @@
 
     <label for="productCategory">Kategoria:</label>
     <select id="productCategory" formControlName="productCategory" multiple required>
-      <option value="category1">Kategoria 1</option>
-      <option value="category2">Kategoria 2</option>
-      <option value="category3">Kategoria 3</option>
+      <option *ngFor="let category of Categories" [value]="category.id">
+        {{ category.categoryName }}
+      </option>
     </select>
     <button type="button" (click)="navigate('categories')">Dodaj nową kategorię</button>
     <div *ngIf="productForm.get('productCategory')?.touched && productForm.get('productCategory')?.errors">

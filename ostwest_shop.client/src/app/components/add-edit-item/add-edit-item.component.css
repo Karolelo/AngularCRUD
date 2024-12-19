@@ -1,24 +1,31 @@
+/* Główne body */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #f4f4f4;
+  background-color: #f8f9fa; /* Jasne tło jak w panelu kategorii */
+  font-family: 'Arial', sans-serif;
+  color: #333;
 }
 
+/* Kontener panelu zmiany/edycji */
 .edit-add-panel {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #919090;
-  width: 400px;
+  padding: 30px;
+  border-radius: 15px; /* Większe zaokrąglenie */
+  background-color: #fff; /* Białe tło dla lepszej przejrzystości */
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Delikatny cień */
+  width: 400px; /* Stała szerokość panelu */
+  max-width: 90%; /* Dostosowanie do mniejszych ekranów */
 }
 
+/* Formularz */
 form {
   display: flex;
   flex-direction: column;
@@ -31,13 +38,24 @@ form label {
   width: 100px;
   text-align: right;
   margin-right: 10px;
+  font-size: 14px;
+  color: #666; /* Subtelny kolor etykiet */
 }
 
-form input, form select {
+form input,
+form select {
   flex: 1;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px; /* Zaokrąglone pola */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #04AA6D; /* Zielony kolor przy aktywnym polu */
+  box-shadow: 0 0 5px rgba(4, 170, 109, 0.5); /* Zielony cień */
 }
 
 form div {
@@ -46,26 +64,51 @@ form div {
   width: 100%;
 }
 
+/* Przyciski formularza */
 form button {
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Zaokrąglone przyciski */
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button[type="submit"] {
-  background-color: #28a745;
+  background-color: #04AA6D; /* Zielony jak w poprzednich panelach */
   color: white;
   margin-right: 10px;
 }
 
+form button[type="submit"]:hover {
+  background-color: #038e57; /* Ciemniejszy zielony po najechaniu */
+  transform: scale(1.05); /* Subtelne powiększenie */
+}
+
 form button[type="button"] {
-  background-color: #dc3545;
+  background-color: #dc3545; /* Czerwony przycisk */
   color: white;
 }
 
+form button[type="button"]:hover {
+  background-color: #a71d2a; /* Ciemniejszy czerwony po najechaniu */
+  transform: scale(1.05); /* Subtelne powiększenie */
+}
+
+/* Informacja o błędach */
 small {
   color: red;
   font-size: 0.875em;
 }
 
+/* Dostosowanie okna na mniejszych ekranach */
+@media (max-width: 480px) {
+  .edit-add-panel {
+    padding: 20px;
+    width: 90%; /* Dopasowanie do szerokości ekranu */
+    gap: 15px;
+  }
+
+  form label {
+    width: 80px; /* Mniejsze etykiety */
+  }
+}

@@ -1,8 +1,31 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 
+/* Główny kontener dashboardu */
+.admin-dashboard {
+  background-color: #f8f9fa; /* Jasne tło */
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 15px; /* Zaokrąglone rogi */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+  width: 90%;
+  max-width: 1400px; /* Maksymalna szerokość dashboardu */
+}
+
+/* Nagłówki w dashboardzie */
+.admin-dashboard h1,
+.admin-dashboard h2 {
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Stonowany ciemny kolor */
+  margin-bottom: 20px;
+}
+
+/* Styl listy */
 li {
   margin-bottom: 5px;
   z-index: 1;
+  list-style: none;
+  font-size: 16px;
+  color: #333; /* Dopasowany kolor tekstu */
 }
 
 .icon {
@@ -11,54 +34,103 @@ li {
   align-items: center;
   cursor: pointer;
   color: #222327;
+  border-radius: 10px; /* Zaokrąglone elementy ikon */
+  padding: 10px;
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 .icon:hover {
   transform: scale(1.1); /* Powiększenie ikonki */
-  color: green; /* Zmiana koloru na zielony */
-  transition: transform 0.3s ease, color 0.3s ease; /* Płynne przejścia */
+  color: #04AA6D; /* Zielony, jak w przyciskach */
+  background-color: #e9ecef; /* Delikatne tło po najechaniu */
 }
 
+/* Tabela */
 table {
   border-collapse: collapse;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   width: 100%;
-  border-spacing: 0;
-
+  border-radius: 10px; /* Zaokrąglone rogi tabeli */
+  overflow: hidden; /* Działa z border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtelny cień */
 }
 
 th {
-  background-color: #f2f2f2;
-  padding: 8px;
+  background-color: #f2f2f2; /* Jasne tło nagłówków */
+  color: #333; /* Stonowane ciemne litery */
+  padding: 10px;
   text-align: left;
+  text-transform: uppercase; /* Duże litery w nagłówkach */
+  font-size: 14px;
 }
 
 tr:nth-child(even) {
-  background-color: grey;
+  background-color: #f8f9fa; /* Jasne tło dla parzystych wierszy */
 }
 
+tr:nth-child(odd) {
+  background-color: #fff; /* Białe tło dla nieparzystych */
+}
+
+tr:hover {
+  background-color: #e9ecef; /* Podświetlenie wiersza */
+}
+
+td {
+  padding: 8px 10px;
+}
+
+/* Styl obrazków w tabeli */
 table img {
   width: 50px;
   height: auto;
   object-fit: scale-down;
+  border-radius: 5px; /* Zaokrąglone rogi obrazków */
 }
 
+/* Przyciski */
 button {
-  background-color: #04AA6D;
+  background-color: #04AA6D; /* Ten sam zielony co w poprzednim panelu */
   color: white;
-  padding: 14px 20px;
+  padding: 10px 20px;
   margin: 8px 0;
+  border-radius: 8px; /* Zaokrąglenie */
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-input[type=text], input[type=password], input[type=email],input[type=number], select {
-  width: 50%;
-  padding: 12px 20px; /*tutaj mam góra dół padding i lewo prawo*/
+button:hover {
+  background-color: #038e57; /* Ciemniejszy zielony po najechaniu */
+  transform: scale(1.05); /* Subtelne powiększenie */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Pola input */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+select {
+  width: 100%; /* Zmienione z 50% na 100% */
+  padding: 12px 15px;
   margin: 8px 0;
   border: 1px solid #ccc;
+  border-radius: 8px; /* Zaokrąglenie pola input */
   box-sizing: border-box;
-  resize: vertical
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus {
+  border-color: #04AA6D; /* Zielony kolor obramowania w focus */
+  box-shadow: 0 0 5px rgba(4, 170, 109, 0.5);
 }
 
 input[type=checkbox] {
@@ -67,9 +139,11 @@ input[type=checkbox] {
   cursor: pointer;
 }
 
+/* Panel z małymi przyciskami */
 .small-button-panel {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
+  gap: 10px; /* Odstęp między przyciskami */
+  margin-top: 20px;
 }
-

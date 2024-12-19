@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Ostwest_Shop.Server.DbContext;
 using Ostwest_Shop.Server.DTOs;
 using Ostwest_Shop.Server.Interfaces;
 using Ostwest_Shop.Server.Models;
+using Ostwest_Shop.Server.Repository;
 
 namespace Ostwest_Shop.Server.Controllers;
 
@@ -11,21 +13,26 @@ public class ProductController : ControllerBase
 {
     private readonly IProductRepository _productRepository;
     private readonly IMagazineRepository _magazineRepository;
-    
-    public ProductController(IProductRepository productRepository, IMagazineRepository magazineRepository)
+    private readonly ICategoryRepository _categoryRepository;
+    private readonly MyDbContext _dbContext;
+    public ProductController(IProductRepository productRepository, IMagazineRepository magazineRepository,
+        CategoryRepository categoryRepository, MyDbContext dbContext)
     {
         _productRepository = productRepository;
         _magazineRepository = magazineRepository;
+        _categoryRepository = categoryRepository;
     }
     
     [HttpGet]
     public ActionResult<Product> GetProduct(int id)
     {
         var product = _productRepository.GetById(id);
+     
         if (product == null)
         {
             return NotFound(); 
         }
+        
         return Ok(product); 
     }
 
@@ -42,8 +49,20 @@ public class ProductController : ControllerBase
         {
             Name = createProductDto.Name,
             Price = createProductDto.Price,
-            Img = createProductDto.Img
+            Img = createProductDto.Img,
         };
+        
+        
+
+        if (createProductDto.CategoriesIDs != null && createProductDto.CategoriesIDs.Count > 0)
+        {
+            var categories = new List<Category>();
+            foreach (var id in createProductDto.CategoriesIDs)
+            {
+                categories.Add(_categoryRepository.getCategoryById(id));
+            }
+            product.Categories = categories;
+        }
         
         _productRepository.CreateNewProduct(product);
         
@@ -72,6 +91,7 @@ public class ProductController : ControllerBase
         _productRepository.UpdateProduct(product);
         return NoContent();
     }
+    
     [HttpDelete("{id}")]
     public ActionResult<Product> DeleteProduct(int id)
     {
@@ -80,9 +100,15 @@ public class ProductController : ControllerBase
         {
             return NotFound(); 
         }
-        _magazineRepository.DeleteMagazine(id);
+
+        if (_magazineRepository.IsMagazineExist(id))
+        {
+            _magazineRepository.DeleteMagazine(id);
+        }
         _productRepository.DeleteProduct(product);
         return Ok(product);
     }
+    
+    
     
 }
