@@ -81,15 +81,22 @@ public class ProductController : ControllerBase
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
     }
 
-    [HttpPut("id")]
-    public ActionResult<Product> UpdateProduct( int id,[FromBody] Product product)
+    [HttpPut]
+    public ActionResult<Product> UpdateProduct([FromBody] UpdateProductDto productDto)
     {
-        if (id != product.Id)
+        _productRepository.UpdateProduct(productDto);
+
+        if (productDto.magazine != null)
         {
-            return BadRequest();
+            Magazine magazine = new Magazine()
+            {
+                ProductId = productDto.id,
+                Quanity = productDto.magazine.Quantity
+            };
+            _magazineRepository.UpdateMagazine(magazine);
         }
-        _productRepository.UpdateProduct(product);
-        return NoContent();
+        
+        return Ok(new { message = $"Product został zaktualizowany {productDto.Name}" });
     }
     
     [HttpDelete("{id}")]

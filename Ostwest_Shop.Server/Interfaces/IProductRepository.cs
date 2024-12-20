@@ -1,4 +1,5 @@
-﻿using Ostwest_Shop.Server.Models;
+﻿using Ostwest_Shop.Server.DTOs;
+using Ostwest_Shop.Server.Models;
 
 namespace Ostwest_Shop.Server.Interfaces;
 
@@ -8,7 +9,7 @@ public interface IProductRepository
     
     IEnumerable<Product> GetAll(bool includeMagazine,bool includeCategory);
     void CreateNewProduct(Product product);
-    void UpdateProduct(Product product);
+    void UpdateProduct(UpdateProductDto product);
     void DeleteProduct(Product product);
     
 }

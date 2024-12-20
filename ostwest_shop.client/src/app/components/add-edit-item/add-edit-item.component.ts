@@ -18,6 +18,7 @@ export class AddEditItemComponent implements OnInit {
   product: Product | null = null;
   router= inject(Router);
   Categories!: Category[];
+  editMode = false;
   constructor(
     private dataSharingService: dataSharingService,
     private productService: ProductsService,
@@ -34,12 +35,14 @@ export class AddEditItemComponent implements OnInit {
         productName: new FormControl(this.product.name || '', Validators.required),
         productPrice: new FormControl(this.product.price || 0, [Validators.required, Validators.min(0)]),
         productQuantity: new FormControl( 0, [Validators.required, Validators.min(0)]),
-        productCategory: new FormControl(this.product?.categories || '', Validators.required),
+          productCategory: new FormControl('', Validators.required)
       },
         {
           updateOn: 'blur'
         });
-    } else {
+      this.editMode = true;
+    }
+    else {
       this.productForm = new FormGroup({
         productName: new FormControl('', [Validators.required, Validators.minLength(3)]),
         productPrice: new FormControl(0, [Validators.required, Validators.min(0)]),
@@ -58,8 +61,8 @@ export class AddEditItemComponent implements OnInit {
   navigate (path: string){
     this.router.navigate([path]);
   }
-  onSubmit(): void {
 
+  createProduct() {
     if (this.productForm.valid) {
       const productData = {
         name: this.productForm.value.productName,
@@ -78,6 +81,38 @@ export class AddEditItemComponent implements OnInit {
           console.error('Błąd tworzenia produktu:', err);
         }
       });
+    }
+  }
+
+  updateProduct() {
+    if (this.productForm.valid) {
+      const productData = {
+        id: this.product?.id,
+        name: this.productForm.value.productName,
+        price: this.productForm.value.productPrice,
+        magazine: {
+          quantity: this.productForm.value.productQuantity
+        },
+        categoriesIDs: this.productForm.value.productCategory
+      }
+      console.log('Wysyłane dane:', JSON.stringify(productData, null, 2));
+      this.productService.updateProduct(productData).subscribe({
+        next: (response) => {
+          console.log('Produkt został zaktualizowany:');
+          this.router.navigate(['dashboard']);
+        },
+        error: (err) => {
+          console.error('Błąd przy aktualizacji produktu produktu:', err);
+        }
+      });
+    }
+  }
+  onSubmit(): void {
+    if(this.editMode){
+      this.updateProduct();
+    }
+    else{
+      this.createProduct();
     }
   }
 }
