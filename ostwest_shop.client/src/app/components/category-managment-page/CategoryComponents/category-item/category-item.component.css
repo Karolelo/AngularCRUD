@@ -4,7 +4,7 @@ li {
   margin-bottom: 5px;
   z-index: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   cursor: pointer;
   color: #222327;

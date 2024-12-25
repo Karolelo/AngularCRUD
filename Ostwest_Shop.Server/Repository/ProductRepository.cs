@@ -36,6 +36,21 @@ public class ProductRepository : IProductRepository
 
         return _context.Set<Product>().ToList();
     }
+    
+    public PaginatedResponse<Product> GetPaginatedProducts(int page, int pageSize)
+    {
+        var count = _context.Set<Product>().Count();
+        var data = _context.Set<Product>()
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+        
+        return new PaginatedResponse<Product>
+        {
+            Data = data,
+            Count = count
+        };
+    }
 
     public void CreateNewProduct(Product product)
     {

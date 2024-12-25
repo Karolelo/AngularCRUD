@@ -1,31 +1,30 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
 
-/* Główny kontener dashboardu */
+
 .admin-dashboard {
-  background-color: #f8f9fa; /* Jasne tło */
+  background-color: #f8f9fa;
   padding: 30px;
   margin: 20px auto;
-  border-radius: 15px; /* Zaokrąglone rogi */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   width: 90%;
-  max-width: 1400px; /* Maksymalna szerokość dashboardu */
+  max-width: 1400px;
 }
 
-/* Nagłówki w dashboardzie */
+
 .admin-dashboard h1,
 .admin-dashboard h2 {
   font-family: 'Arial', sans-serif;
-  color: #333; /* Stonowany ciemny kolor */
+  color: #333;
   margin-bottom: 20px;
 }
 
-/* Styl listy */
 li {
   margin-bottom: 5px;
   z-index: 1;
   list-style: none;
   font-size: 16px;
-  color: #333; /* Dopasowany kolor tekstu */
+  color: #333;
 }
 
 .icon {
@@ -34,75 +33,75 @@ li {
   align-items: center;
   cursor: pointer;
   color: #222327;
-  border-radius: 10px; /* Zaokrąglone elementy ikon */
+  border-radius: 10px;
   padding: 10px;
   transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 .icon:hover {
-  transform: scale(1.1); /* Powiększenie ikonki */
-  color: #04AA6D; /* Zielony, jak w przyciskach */
-  background-color: #e9ecef; /* Delikatne tło po najechaniu */
+  transform: scale(1.1);
+  color: #007bff;
+  background-color: #e9ecef;
 }
 
-/* Tabela */
+
 table {
   border-collapse: collapse;
   border: 1px solid #ddd;
   width: 100%;
-  border-radius: 10px; /* Zaokrąglone rogi tabeli */
-  overflow: hidden; /* Działa z border-radius */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtelny cień */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 th {
-  background-color: #f2f2f2; /* Jasne tło nagłówków */
-  color: #333; /* Stonowane ciemne litery */
+  background-color: #f2f2f2;
+  color: #333;
   padding: 10px;
   text-align: left;
-  text-transform: uppercase; /* Duże litery w nagłówkach */
+  text-transform: uppercase;
   font-size: 14px;
 }
 
 tr:nth-child(even) {
-  background-color: #f8f9fa; /* Jasne tło dla parzystych wierszy */
+  background-color: #f8f9fa;
 }
 
 tr:nth-child(odd) {
-  background-color: #fff; /* Białe tło dla nieparzystych */
+  background-color: #fff;
 }
 
 tr:hover {
-  background-color: #e9ecef; /* Podświetlenie wiersza */
+  background-color: #e9ecef;
 }
 
 td {
   padding: 8px 10px;
 }
 
-/* Styl obrazków w tabeli */
+
 table img {
   width: 50px;
   height: auto;
   object-fit: scale-down;
-  border-radius: 5px; /* Zaokrąglone rogi obrazków */
+  border-radius: 5px;
 }
 
-/* Przyciski */
+
 button {
-  background-color: #04AA6D; /* Ten sam zielony co w poprzednim panelu */
+  background-color: #007bff;
   color: white;
   padding: 10px 20px;
   margin: 8px 0;
-  border-radius: 8px; /* Zaokrąglenie */
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #038e57; /* Ciemniejszy zielony po najechaniu */
-  transform: scale(1.05); /* Subtelne powiększenie */
+  background-color:  #0056b3;
+  transform: scale(1.05);
 }
 
 button:disabled {
@@ -110,17 +109,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Pola input */
+
 input[type=text],
 input[type=password],
 input[type=email],
 input[type=number],
 select {
-  width: 100%; /* Zmienione z 50% na 100% */
+  width: 100%;
   padding: 12px 15px;
   margin: 8px 0;
   border: 1px solid #ccc;
-  border-radius: 8px; /* Zaokrąglenie pola input */
+  border-radius: 8px;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -129,8 +128,8 @@ input[type=text]:focus,
 input[type=password]:focus,
 input[type=email]:focus,
 input[type=number]:focus {
-  border-color: #04AA6D; /* Zielony kolor obramowania w focus */
-  box-shadow: 0 0 5px rgba(4, 170, 109, 0.5);
+  border-color:  #0056b3;
+  box-shadow: 0 0 5px rgba(4, 104, 170, 0.5);
 }
 
 input[type=checkbox] {
@@ -139,11 +138,11 @@ input[type=checkbox] {
   cursor: pointer;
 }
 
-/* Panel z małymi przyciskami */
+
 .small-button-panel {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  gap: 10px; /* Odstęp między przyciskami */
+  gap: 10px;
   margin-top: 20px;
 }

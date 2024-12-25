@@ -41,6 +41,13 @@ public class ProductController : ControllerBase
     {
         return Ok(_productRepository.GetAll(includeMagazine: true,includeCategory: true));
     }
+
+    [HttpGet("page/{page}/size/{size}")]
+    public IActionResult GetProducts(int page, int size)
+    {
+        var response = _productRepository.GetPaginatedProducts(page, size);
+        return Ok(response);
+    }
     
     [HttpPost]
     public ActionResult<Product> CreateProduct([FromBody] CreateProductDto createProductDto)

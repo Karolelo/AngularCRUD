@@ -1,17 +1,15 @@
-/* Styl dla category-managment-panel */
 .category-managment-panel {
-  background-color: #f8f9fa; /* Jasne tło, odpowiada stylistyce dashboardu */
+  background-color: #f8f9fa;
   padding: 20px;
   margin: 20px auto;
-  border-radius: 15px; /* Zaokrąglone rogi */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtelny cień */
-  width: 80%; /* Ustaw szerokość panelu */
-  max-width: 1200px; /* Maksymalna szerokość */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1200px;
 }
 
 
 
-/* Styl dla app-category-list (jeśli potrzeba) */
 app-category-list {
   margin-top: 20px;
   padding: 10px;
@@ -20,18 +18,18 @@ app-category-list {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Dodaj opcje table, jeśli panel ich użyje */
+
 .category-managment-panel table {
-  border-radius: 10px; /* Zaokrąglone rogi w tabeli */
-  overflow: hidden; /* Daje lepszy efekt dla border-radius */
+  border-radius: 10px;
+  overflow: hidden;
   border: 1px solid #ddd;
 }
 
-/* Ogólny styl dla dashboardu */
+
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f1f3f6; /* Tło jak typowy dashboard */
+  background-color: #f1f3f6;
   margin: 0;
   padding: 0;
-  color: #333; /* Ciemnoszary tekst */
+  color: #333;
 }

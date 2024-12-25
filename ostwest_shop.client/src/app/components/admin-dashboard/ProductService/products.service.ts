@@ -15,6 +15,12 @@ export class ProductsService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseUrl}/all`);
   }
+
+  getProductPage(page: number, pageSize: number): Observable<{ data: Product[], count: number }> {
+    return this.http.get<{ data: Product[], count: number }>(
+      `${this.baseUrl}/page/${page + 1}/size/${pageSize}`
+    );
+  }
   deleteProduct(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
