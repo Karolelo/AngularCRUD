@@ -30,5 +30,9 @@ export class ProductsService {
   updateProduct(product: any): Observable<Product> {
     return this.http.put<any>(`${this.baseUrl}`, product);
   }
+
+  /*uploadImage(file: File): Observable<ImageData> {
+
+  }*/
 }
 

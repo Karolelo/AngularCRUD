@@ -83,9 +83,9 @@ public partial class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
             entity.ToTable("Product");
 
             entity.Property(e => e.Id).HasColumnName("ID");
-            entity.Property(e => e.Img)
-                .HasColumnType("image")
-                .HasColumnName("img");
+            entity.Property(e => e.ImgSourcePath)
+                .HasColumnType("varchar(255)")
+                .HasColumnName("img_source_path");
             entity.Property(e => e.Name)
                 .HasMaxLength(20)
                 .IsUnicode(false);

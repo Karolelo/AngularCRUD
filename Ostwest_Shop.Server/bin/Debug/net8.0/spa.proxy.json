@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:52826",
 "RedirectUrl": "",
 "LaunchCommand": "npm start",
-"WorkingDirectory": "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop\\Ostwest_Shop.Server\\..\\ostwest_shop.client",
+"WorkingDirectory": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\..\\ostwest_shop.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

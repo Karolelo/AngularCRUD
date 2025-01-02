@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Ostwest_Shop.Server.DbContext;
 using Ostwest_Shop.Server.Interfaces;
 using Ostwest_Shop.Server.Models;
@@ -33,8 +34,9 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("AllowAngularApp");
 
-app.UseDefaultFiles();
+
 app.UseStaticFiles();
+app.UseDefaultFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

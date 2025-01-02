@@ -36,7 +36,7 @@ public class ProductRepository : IProductRepository
 
         return _context.Set<Product>().ToList();
     }
-    
+
     public PaginatedResponse<Product> GetPaginatedProducts(int page, int pageSize)
     {
         var count = _context.Set<Product>().Count();
@@ -44,7 +44,7 @@ public class ProductRepository : IProductRepository
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToList();
-        
+
         return new PaginatedResponse<Product>
         {
             Data = data,
@@ -58,58 +58,70 @@ public class ProductRepository : IProductRepository
         _context.SaveChanges();
     }
 
-    public void UpdateProduct(UpdateProductDto product)
-{
-    using (var transaction = _context.Database.BeginTransaction())
+    public void UpdateProduct(UpdateProductDto product, string relativePath)
     {
-        try
+        using (var transaction = _context.Database.BeginTransaction())
         {
-            var existingProduct = GetById(product.id);
-            if (existingProduct == null)
+            try
             {
-                throw new Exception($"Product with ID {product.id} does not exist.");
-            }
-            
-            string updateProductSql = @"
+                var existingProduct = GetById(product.Id);
+                if (existingProduct == null)
+                {
+                    throw new Exception($"Product with ID {product.Id} does not exist.");
+                }
+
+                string updateProductSql = @"
             UPDATE Product
             SET Name = @Name, Price = @Price
             WHERE ID = @ProductId";
 
-            _context.Database.ExecuteSqlRaw(updateProductSql,
-                new SqlParameter("@Name", product.Name),
-                new SqlParameter("@Price", product.price),
-                new SqlParameter("@ProductId", product.id));
-            
-            string deleteProductCategorySql = @"
+                _context.Database.ExecuteSqlRaw(updateProductSql,
+                    new SqlParameter("@Name", product.Name),
+                    new SqlParameter("@Price", product.Price),
+                    new SqlParameter("@ProductId", product.Id));
+
+                string deleteProductCategorySql = @"
             DELETE FROM Product_category
             WHERE Product_ID = @ProductId";
 
-            _context.Database.ExecuteSqlRaw(deleteProductCategorySql,
-                new SqlParameter("@ProductId", product.id));
-            
-            if (product.categoriesIDs != null && product.categoriesIDs.Count > 0)
-            {
-                foreach (var categoryId in product.categoriesIDs)
+                _context.Database.ExecuteSqlRaw(deleteProductCategorySql,
+                    new SqlParameter("@ProductId", product.Id));
+
+                if (product.CategoriesIDs != null && product.CategoriesIDs.Count > 0)
                 {
-                    string insertProductCategorySql = @"
+                    foreach (var categoryId in product.CategoriesIDs)
+                    {
+                        string insertProductCategorySql = @"
                     INSERT INTO Product_category (Category_ID, Product_ID)
                     VALUES (@CategoryId, @ProductId)";
 
-                    _context.Database.ExecuteSqlRaw(insertProductCategorySql,
-                        new SqlParameter("@CategoryId", categoryId),
-                        new SqlParameter("@ProductId", product.id));
+                        _context.Database.ExecuteSqlRaw(insertProductCategorySql,
+                            new SqlParameter("@CategoryId", categoryId),
+                            new SqlParameter("@ProductId", product.Id));
+                    }
                 }
+
+                if (relativePath != null)
+                {
+                    string updateProductImageSql = @"
+                UPDATE Product
+                SET img_source_path = @img_source_path
+                WHERE ID = @ProductId";
+
+                    _context.Database.ExecuteSqlRaw(updateProductImageSql,
+                        new SqlParameter("@img_source_path", relativePath),
+                        new SqlParameter("@ProductId", product.Id));
+                }
+
+                transaction.Commit();
             }
-            
-            transaction.Commit();
-        }
-        catch (Exception ex)
-        {
-            transaction.Rollback();
-            throw new Exception("Error updating product and its categories.", ex);
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception("Error updating product and its categories.", ex);
+            }
         }
     }
-}
 
     public void DeleteProduct(Product product)
     {

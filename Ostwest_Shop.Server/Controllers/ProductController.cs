@@ -15,6 +15,7 @@ public class ProductController : ControllerBase
     private readonly IMagazineRepository _magazineRepository;
     private readonly ICategoryRepository _categoryRepository;
     private readonly MyDbContext _dbContext;
+
     public ProductController(IProductRepository productRepository, IMagazineRepository magazineRepository,
         CategoryRepository categoryRepository, MyDbContext dbContext)
     {
@@ -22,24 +23,24 @@ public class ProductController : ControllerBase
         _magazineRepository = magazineRepository;
         _categoryRepository = categoryRepository;
     }
-    
+
     [HttpGet]
     public ActionResult<Product> GetProduct(int id)
     {
         var product = _productRepository.GetById(id);
-     
+
         if (product == null)
         {
-            return NotFound(); 
+            return NotFound();
         }
-        
-        return Ok(product); 
+
+        return Ok(product);
     }
 
     [HttpGet("all")]
     public ActionResult<IEnumerable<Product>> GetAllProducts()
     {
-        return Ok(_productRepository.GetAll(includeMagazine: true,includeCategory: true));
+        return Ok(_productRepository.GetAll(includeMagazine: true, includeCategory: true));
     }
 
     [HttpGet("page/{page}/size/{size}")]
@@ -48,81 +49,115 @@ public class ProductController : ControllerBase
         var response = _productRepository.GetPaginatedProducts(page, size);
         return Ok(response);
     }
-    
+
     [HttpPost]
-    public ActionResult<Product> CreateProduct([FromBody] CreateProductDto createProductDto)
+    public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductDto productDto)
     {
+        string relativeImgPath = null;
+
+        if (productDto.Img != null)
+        {
+            var file = productDto.Img;
+
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
+            var absoluteImgPath = Path.Combine(uploadsFolder, uniqueFileName);
+            relativeImgPath = $"/uploads/{uniqueFileName}";
+
+
+            using (var stream = new FileStream(absoluteImgPath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+        }
+
         Product product = new Product()
         {
-            Name = createProductDto.Name,
-            Price = createProductDto.Price,
-            Img = createProductDto.Img,
+            Name = productDto.Name,
+            Price = productDto.Price,
+            ImgSourcePath = relativeImgPath
         };
-        
-        
 
-        if (createProductDto.CategoriesIDs != null && createProductDto.CategoriesIDs.Count > 0)
+        if (productDto.CategoriesIDs != null && productDto.CategoriesIDs.Count > 0)
         {
             var categories = new List<Category>();
-            foreach (var id in createProductDto.CategoriesIDs)
+            foreach (var id in productDto.CategoriesIDs)
             {
                 categories.Add(_categoryRepository.getCategoryById(id));
             }
+
             product.Categories = categories;
         }
-        
-        _productRepository.CreateNewProduct(product);
-        
-        if (createProductDto.Magazine != null)
-        {
-            Magazine magazine = new Magazine()
-            {
-                ProductId = product.Id, 
-                Quanity = createProductDto.Magazine.Quantity
-            };
 
-            
-            _magazineRepository.CreateMagazine(magazine.ProductId, magazine.Quanity);
-        }
+        _productRepository.CreateNewProduct(product);
+        _magazineRepository.CreateMagazine(product.Id, productDto.Quantity);
         
-        return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+
+        string imageUrl = relativeImgPath != null
+            ? $"{Request.Scheme}://{Request.Host}{relativeImgPath}"
+            : null;
+
+        return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, new
+        {
+            id = product.Id,
+            name = product.Name,
+            price = product.Price,
+            imageUrl
+        });
     }
 
     [HttpPut]
-    public ActionResult<Product> UpdateProduct([FromBody] UpdateProductDto productDto)
+    public ActionResult<Product> UpdateProduct([FromForm] UpdateProductDto productDto)
     {
-        _productRepository.UpdateProduct(productDto);
-
-        if (productDto.magazine != null)
-        {
-            Magazine magazine = new Magazine()
-            {
-                ProductId = productDto.id,
-                Quanity = productDto.magazine.Quantity
-            };
-            _magazineRepository.UpdateMagazine(magazine);
-        }
+        string relativeImgPath = null;
         
+        Magazine magazine = new Magazine()
+        {
+            ProductId = productDto.Id,
+            Quanity = productDto.Quantity
+        };
+        _magazineRepository.UpdateMagazine(magazine);
+
+        if (productDto.Img != null)
+        {
+            var file = productDto.Img;
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            
+            var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
+            var absoluteImgPath = Path.Combine(uploadsFolder, uniqueFileName);
+            relativeImgPath = $"/uploads/{uniqueFileName}";
+
+
+            using (var stream = new FileStream(absoluteImgPath, FileMode.Create))
+            {
+                file.CopyToAsync(stream);
+            }
+        }
+        _productRepository.UpdateProduct(productDto, relativeImgPath);
         return Ok(new { message = $"Product został zaktualizowany {productDto.Name}" });
     }
-    
+
     [HttpDelete("{id}")]
     public ActionResult<Product> DeleteProduct(int id)
     {
         var product = _productRepository.GetById(id);
         if (product == null)
         {
-            return NotFound(); 
+            return NotFound();
         }
 
         if (_magazineRepository.IsMagazineExist(id))
         {
             _magazineRepository.DeleteMagazine(id);
         }
+
         _productRepository.DeleteProduct(product);
         return Ok(product);
     }
-    
-    
-    
 }

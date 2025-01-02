@@ -1,1 +1,2 @@
 C:\Users\Kuba\source\repos\Ostwest_Shop\ostwest_shop.client\obj\Debug\ostwest_shop.client.esproj.CoreCompileInputs.cache
+C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\ostwest_shop.client\obj\Debug\ostwest_shop.client.esproj.CoreCompileInputs.cache

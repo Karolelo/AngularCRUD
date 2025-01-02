@@ -9,7 +9,7 @@ public interface IProductRepository
     IEnumerable<Product> GetAll(bool includeMagazine,bool includeCategory);
     PaginatedResponse<Product> GetPaginatedProducts(int page, int pageSize);
     void CreateNewProduct(Product product);
-    void UpdateProduct(UpdateProductDto product);
+    void UpdateProduct(UpdateProductDto product,string relativePath);
     void DeleteProduct(Product product);
     
     

@@ -24,6 +24,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   removeCategory(id: number): void {
+    console.log("produkt usuniety "+id);
     this.categoryService.deleteCategory(id).subscribe(() => {
       const currentCategories = this.categoriesSubject.value.filter((category) => category.id !== id);
       this.categoriesSubject.next(currentCategories);

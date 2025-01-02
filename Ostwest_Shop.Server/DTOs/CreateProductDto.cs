@@ -8,9 +8,9 @@ public class CreateProductDto
 
         public decimal Price { get; set; }
 
-        public byte[]? Img { get; set; }
-
-        public MagazineDto? Magazine { get; set; } 
+        public IFormFile? Img { get; set; }
+        
+        public int Quantity { get; set; }
         
         public List<int>? CategoriesIDs { get; set; }
     

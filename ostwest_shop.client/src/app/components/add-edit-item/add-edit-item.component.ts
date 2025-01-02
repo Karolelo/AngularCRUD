@@ -19,6 +19,7 @@ export class AddEditItemComponent implements OnInit {
   router= inject(Router);
   Categories!: Category[];
   editMode = false;
+  file!: File;
   constructor(
     private dataSharingService: dataSharingService,
     private productService: ProductsService,
@@ -34,8 +35,8 @@ export class AddEditItemComponent implements OnInit {
       this.productForm = new FormGroup({
         productName: new FormControl(this.product.name || '', Validators.required),
         productPrice: new FormControl(this.product.price || 0, [Validators.required, Validators.min(0)]),
-        productQuantity: new FormControl( 0, [Validators.required, Validators.min(0)]),
-          productCategory: new FormControl('', Validators.required)
+        productQuantity: new FormControl( this.product?.magazine.quanity, [Validators.required, Validators.min(0)]),
+          productCategory: new FormControl([], Validators.required)
       },
         {
           updateOn: 'blur'
@@ -47,7 +48,7 @@ export class AddEditItemComponent implements OnInit {
         productName: new FormControl('', [Validators.required, Validators.minLength(3)]),
         productPrice: new FormControl(0, [Validators.required, Validators.min(0)]),
         productQuantity: new FormControl(0, [Validators.required, Validators.min(0)]),
-        productCategory: new FormControl('', Validators.required),
+        productCategory: new FormControl([], Validators.required),
       },
         {
           updateOn: 'blur'
@@ -62,17 +63,34 @@ export class AddEditItemComponent implements OnInit {
     this.router.navigate([path]);
   }
 
+  onFileChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      this.file = target.files[0];
+    }
+  }
+
   createProduct() {
     if (this.productForm.valid) {
-      const productData = {
-        name: this.productForm.value.productName,
-        price: this.productForm.value.productPrice,
-        magazine: {
-          quantity: this.productForm.value.productQuantity
-        },
-        categoriesIDs: this.productForm.value.productCategory
-      }
-      this.productService.createProduct(productData).subscribe({
+
+      const productForm = new FormData();
+      productForm.append('name',this.productForm.value.productName);
+      productForm.append('price',this.productForm.value.productPrice);
+      if(this.file)
+      productForm.append('Img',this.file)
+      productForm.append('quantity',this.productForm.value.productQuantity);
+
+      this.productForm.value.productCategory.forEach((categoryId: number) => {
+        productForm.append('categoriesIDs[]', categoryId.toString());
+      });
+
+
+      console.log('FormData Values:');
+      productForm.forEach((value, key) => {
+        console.log(`${key}:`, value);
+      });
+
+      this.productService.createProduct(productForm).subscribe({
         next: (response) => {
           console.log('Produkt został utworzony:', response);
           this.router.navigate(['dashboard']);
@@ -86,17 +104,24 @@ export class AddEditItemComponent implements OnInit {
 
   updateProduct() {
     if (this.productForm.valid) {
-      const productData = {
-        id: this.product?.id,
-        name: this.productForm.value.productName,
-        price: this.productForm.value.productPrice,
-        magazine: {
-          quantity: this.productForm.value.productQuantity
-        },
-        categoriesIDs: this.productForm.value.productCategory
-      }
-      console.log('Wysyłane dane:', JSON.stringify(productData, null, 2));
-      this.productService.updateProduct(productData).subscribe({
+      const productForm = new FormData();
+      productForm.append('id',this.product!.id.toString());
+      productForm.append('name',this.productForm.value.productName);
+      productForm.append('price',this.productForm.value.productPrice);
+      if(this.file)
+        productForm.append('Img',this.file)
+      productForm.append('quantity',this.productForm.value.productQuantity);
+
+      this.productForm.value.productCategory.forEach((categoryId: number) => {
+        productForm.append('categoriesIDs[]', categoryId.toString());
+      });
+
+
+      console.log('FormData Values:');
+      productForm.forEach((value, key) => {
+        console.log(`${key}:`, value);
+      });
+      this.productService.updateProduct(productForm).subscribe({
         next: (response) => {
           console.log('Produkt został zaktualizowany:');
           this.router.navigate(['dashboard']);

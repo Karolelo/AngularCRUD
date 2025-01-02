@@ -45,4 +45,6 @@ export class AdminDashboardComponent implements OnInit{
     }}
     );
   }
+
+    protected readonly encodeURIComponent = encodeURIComponent;
 }

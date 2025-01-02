@@ -26,6 +26,7 @@ import { ItemCardComponent } from './components/item-view-page-for-clients/item-
 import { CardListComponent } from './components/item-view-page-for-clients/item-view-components/card-list/card-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ItemViewPageForClientsComponent,
     ItemCardComponent,
     CardListComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

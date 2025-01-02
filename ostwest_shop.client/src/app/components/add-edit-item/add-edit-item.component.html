@@ -25,6 +25,8 @@
       <small *ngIf="productForm.get('productQuantity')?.errors?.['min']">Ilość musi być większa lub równa 0.</small>
     </div>
 
+    <label for="productImg"></label>
+    <input type="file" id="productImg" accept=".png,.jpg" (change)="onFileChange($event)">
 
     <label for="productCategory">Kategoria:</label>
     <select id="productCategory" formControlName="productCategory" multiple required>

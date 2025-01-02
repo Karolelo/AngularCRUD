@@ -22,7 +22,7 @@
       <tr *ngFor="let product of Products">
         <td>{{ product.name }}</td>
         <td>{{ product.price }}</td>
-        <td><img [src]="product.imgSourcePath" [alt]="product.name" width="50"></td>
+        <td><img [src]="'https://localhost:7200//'+product.imgSourcePath" [alt]="product.name" width="50"></td>
         <td>{{product.magazine.quanity}}</td>
         <td>
           <ul class="category-list">

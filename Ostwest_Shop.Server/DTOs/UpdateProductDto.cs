@@ -1,3 +1,3 @@
 ﻿namespace Ostwest_Shop.Server.DTOs;
 
-public record UpdateProductDto(int id,string Name,decimal price,byte[]? img,MagazineDto? magazine,List<int>? categoriesIDs);
+public record UpdateProductDto(int Id,string Name,decimal Price,IFormFile? Img,int Quantity,List<int>? CategoriesIDs);

@@ -11,7 +11,7 @@ public partial class Product
 
     public decimal Price { get; set; }
 
-    public byte[]? Img { get; set; }
+    public string ImgSourcePath { get; set; }
 
     public virtual Magazine? Magazine { get; set; }
 

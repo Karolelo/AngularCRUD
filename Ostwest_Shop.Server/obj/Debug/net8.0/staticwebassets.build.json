@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "e8P5A/ibfFQvR+vBp/GFmwZiWmGJcDIyE78oxRRR8Qg=",
+  "Hash": "Oan/U9oCRF+v/SoRnyI2QMsXLkOLSVrq433NZQWkLxI=",
   "Source": "Ostwest_Shop.Server",
   "BasePath": "_content/Ostwest_Shop.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\Kuba\\source\\repos\\Ostwest_Shop\\ostwest_shop.client\\ostwest_shop.client.esproj",
+      "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\ostwest_shop.client\\ostwest_shop.client.esproj",
       "Version": 2,
       "Source": "ostwest_shop.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
@@ -18,7 +18,34 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Ostwest_Shop.Server\\wwwroot",
+      "Source": "Ostwest_Shop.Server",
+      "ContentRoot": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\",
+      "BasePath": "_content/Ostwest_Shop.Server",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\Logo.png",
+      "SourceId": "Ostwest_Shop.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\",
+      "BasePath": "_content/Ostwest_Shop.Server",
+      "RelativePath": "uploads/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Logo.png"
+    }
+  ]
 }
