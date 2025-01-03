@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HI11g+NexNGJLtO+g6NIwtuT5cHHAQUdP4pQEmXDmFQ=",
+  "Hash": "nTr7NwhnE4b15V2mLqHSFKKuulD1B8ypSriWVN3a3wg=",
   "Source": "Ostwest_Shop.Server",
   "BasePath": "_content/Ostwest_Shop.Server",
   "Mode": "Default",
@@ -65,6 +65,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\70fd9591-39cb-4205-ba37-8080979acc07_iceland-1214063__340.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\d53ade14-e69a-42d4-a922-371ee55cc502_iceland-1214063__340.jpg",
+      "SourceId": "Ostwest_Shop.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\",
+      "BasePath": "_content/Ostwest_Shop.Server",
+      "RelativePath": "uploads/d53ade14-e69a-42d4-a922-371ee55cc502_iceland-1214063__340.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d53ade14-e69a-42d4-a922-371ee55cc502_iceland-1214063__340.jpg"
     },
     {
       "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\Logo.png",

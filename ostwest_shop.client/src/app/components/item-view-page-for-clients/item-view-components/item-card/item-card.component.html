@@ -1,0 +1,11 @@
+<mat-card class="dashboard-card">
+    <img mat-card-image [src]="'https://localhost:7200//'+product.imgSourcePath" [alt]="product.name">
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-content>
+        <p class="price">${{ product.price }}</p>
+        <p>Jakiś opis</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>Dodaj do koszyka</button>
+    </mat-card-actions>
+</mat-card>

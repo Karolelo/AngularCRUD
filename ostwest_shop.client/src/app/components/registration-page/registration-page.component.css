@@ -1,0 +1,106 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+mat-card-title {
+  color: #007bff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+mat-card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px
+}
+
+mat-form-field input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+mat-form-field input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(4, 112, 170, 0.5);
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  margin-right: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button.cancelButton {
+  background-color: #dc3545;
+}
+
+button.cancelButton:hover {
+  background-color: #a71d2a;
+  transform: scale(1.05);
+}
+
+mat-error {
+  color: red;
+  font-size: 0.6rem;
+}
+
+@media (max-width: 480px) {
+  mat-card {
+    padding: 20px;
+    gap: 15px;
+    width: 90%;
+  }
+
+  mat-form-field {
+    gap: 10px;
+  }
+
+  mat-card-title {
+    font-size: 1.2rem;
+  }
+}

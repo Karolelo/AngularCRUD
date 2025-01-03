@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Ostwest_Shop.Server.DbContext;
 using Ostwest_Shop.Server.DTOs;
 using Ostwest_Shop.Server.Interfaces;
@@ -51,6 +52,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public async Task<ActionResult<Product>> CreateProduct([FromForm] CreateProductDto productDto)
     {
         string relativeImgPath = null;
@@ -113,6 +115,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut]
+    [Authorize(Roles = "admin")]
     public ActionResult<Product> UpdateProduct([FromForm] UpdateProductDto productDto)
     {
         string relativeImgPath = null;
@@ -144,6 +147,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "admin")]
     public ActionResult<Product> DeleteProduct(int id)
     {
         var product = _productRepository.GetById(id);

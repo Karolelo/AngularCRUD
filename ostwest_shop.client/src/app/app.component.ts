@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import {UserService} from './services/UserService/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
   styleUrl: './app.component.css'
 })
-export class AppComponent  {
+export class AppComponent implements OnInit  {
 
+  constructor(private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.logout()
+    console.log('Local storage został wyczyszczony na starcie aplikacji');
+  }
 }

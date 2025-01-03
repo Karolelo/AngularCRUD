@@ -2,10 +2,13 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 /* GLOBAL STYLES */
 html, body {
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
 }
+
+
 
 

@@ -1,0 +1,16 @@
+<div *ngIf="products?.length; else noProducts">
+  <div *ngFor="let product of products" id="product-list">
+    <app-item-card [product]="product"></app-item-card>
+  </div>
+</div>
+<ng-template #noProducts>
+  <p>No products available.</p>
+</ng-template>
+
+<mat-paginator
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+  [pageSizeOptions]="[10, 25, 50]"
+  [length]="totalItems"
+  (page)="onPageChange($event)"
+></mat-paginator>

@@ -8,9 +8,11 @@ import {
 } from './components/item-view-page-for-clients/item-view-page-for-clients.component';
 import {RegistrationPageComponent} from './components/registration-page/registration-page.component';
 import {LoginPageComponent} from './components/login-page/login-page.component';
+import {MainPageComponent} from './components/main-page/main-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/mainPage', pathMatch: 'full' },
+  { path: 'mainPage', component: MainPageComponent},
   { path: 'dashboard', component: AdminDashboardComponent },
   { path: 'dashboard/add-edit-item', component: AddEditItemComponent},
   { path: 'categories', component: CategoryManagmentPageComponent},

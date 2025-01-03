@@ -1,0 +1,17 @@
+<header id="header">
+  <img [src]="'https://localhost:7200//uploads/Logo.png'" loading="lazy" alt="logo" id="logo">
+  <nav id="menu">
+    <!--<a href="MainView.html">Strona główna</a>-->
+    <a *ngIf="isAdmin()" routerLink=''>Panel Administracyjny</a>
+    <a routerLink='/mainPage'>Strona Główna</a>
+    <a routerLink='/productList'>Produkty</a>
+    <a *ngIf='!isLoggedIn()' routerLink="/login">Zaloguj</a>
+    <a *ngIf='!isLoggedIn()' routerLink="/register">Rejestracja</a>
+  </nav>
+  <button *ngIf="isLoggedIn()" (click)="logout()">Wyloguj się</button>
+  <div id="cart">
+    <mat-icon>shopping_cart</mat-icon>
+    <span id="cart-count">0</span>
+  </div>
+</header>
+

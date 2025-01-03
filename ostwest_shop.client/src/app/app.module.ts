@@ -23,6 +23,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import {MaterialModule} from './modules/material/material.module';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
+import { MainPageComponent } from './components/main-page/main-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import {AuthInterceptor} from './interceptors/auth.interceptor';
     CardListComponent,
     LoginPageComponent,
     RegistrationPageComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

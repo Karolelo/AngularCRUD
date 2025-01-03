@@ -1,0 +1,7 @@
+p {
+  text-indent: 20px;
+}
+.main-view article img {
+  max-width:20%;
+  float: right
+}
