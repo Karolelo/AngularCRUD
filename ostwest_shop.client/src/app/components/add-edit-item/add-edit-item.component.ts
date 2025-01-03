@@ -1,11 +1,11 @@
 import { Component, OnInit,inject } from '@angular/core';
 import { FormGroup,ReactiveFormsModule, FormControl,Validators } from '@angular/forms';
-import { dataSharingService } from '../admin-dashboard/DataSharingService/data-sharing.service';
 import { Product } from '../../Intefraces/product';
 import { Router } from '@angular/router';
-import {ProductsService} from '../admin-dashboard/ProductService/products.service';
 import {Category} from '../../Intefraces/category';
 import {CategoryService} from '../category-managment-page/CategoryService/category.service';
+import {ProductsService} from '../../services/ProductService/products.service';
+import {dataSharingService} from '../../services/DataSharingService/data-sharing.service';
 @Component({
   selector: 'app-add-edit-item',
   standalone: false,
@@ -31,6 +31,7 @@ export class AddEditItemComponent implements OnInit {
     const product = this.dataSharingService.getProduct();
     if (product) {
       this.product = product;
+
 
       this.productForm = new FormGroup({
         productName: new FormControl(this.product.name || '', Validators.required),

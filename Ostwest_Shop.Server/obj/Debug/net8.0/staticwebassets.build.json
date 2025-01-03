@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Oan/U9oCRF+v/SoRnyI2QMsXLkOLSVrq433NZQWkLxI=",
+  "Hash": "HI11g+NexNGJLtO+g6NIwtuT5cHHAQUdP4pQEmXDmFQ=",
   "Source": "Ostwest_Shop.Server",
   "BasePath": "_content/Ostwest_Shop.Server",
   "Mode": "Default",
@@ -28,6 +28,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\487b244e-2f08-4c3e-9a75-f0434a5adaaa_mZdiszQcB7IrDmF89yRNrohhLQk.jpg",
+      "SourceId": "Ostwest_Shop.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\",
+      "BasePath": "_content/Ostwest_Shop.Server",
+      "RelativePath": "uploads/487b244e-2f08-4c3e-9a75-f0434a5adaaa_mZdiszQcB7IrDmF89yRNrohhLQk.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\487b244e-2f08-4c3e-9a75-f0434a5adaaa_mZdiszQcB7IrDmF89yRNrohhLQk.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\70fd9591-39cb-4205-ba37-8080979acc07_iceland-1214063__340.jpg",
+      "SourceId": "Ostwest_Shop.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\",
+      "BasePath": "_content/Ostwest_Shop.Server",
+      "RelativePath": "uploads/70fd9591-39cb-4205-ba37-8080979acc07_iceland-1214063__340.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\70fd9591-39cb-4205-ba37-8080979acc07_iceland-1214063__340.jpg"
+    },
     {
       "Identity": "C:\\Users\\kasid\\OneDrive\\Desktop\\Ostwest_Shop\\Ostwest_Shop.Server\\wwwroot\\uploads\\Logo.png",
       "SourceId": "Ostwest_Shop.Server",

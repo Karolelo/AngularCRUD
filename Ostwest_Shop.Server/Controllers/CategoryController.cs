@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Ostwest_Shop.Server.DTOs;
 using Ostwest_Shop.Server.Models;
 using Ostwest_Shop.Server.Repository;
@@ -29,6 +30,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "admin")]
     public ActionResult<Category> DeleteCategory(int id)
     {
         var category = _categoryRepository.getCategoryById(id);
@@ -40,6 +42,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "admin")]
     public ActionResult<Category> CreateCategory([FromBody] CreateCategoryDto createCategoryDto)
     {
         var createdCategory = _categoryRepository.addCategory(createCategoryDto.name);

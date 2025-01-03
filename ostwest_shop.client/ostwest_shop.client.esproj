@@ -12,6 +12,9 @@
     <Folder Include="src\app\components\category-managment-page\CategoryService\" />
     <Folder Include="src\app\components\item-view-page-for-clients\item-view-components\" />
     <Folder Include="src\app\Intefraces\" />
+    <Folder Include="src\app\interceptors\" />
+    <Folder Include="src\app\modules\" />
+    <Folder Include="src\app\services\UserService\" />
     <Folder Include="src\app\SharedComponets\" />
   </ItemGroup>
 </Project>

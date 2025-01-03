@@ -355,3 +355,4 @@ C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\Ostwest_Shop.Server\obj\Debug\net8.
 C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\Ostwest_Shop.Server\obj\Debug\net8.0\Ostwest_Shop.Server.pdb
 C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\Ostwest_Shop.Server\obj\Debug\net8.0\Ostwest_Shop.Server.genruntimeconfig.cache
 C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\Ostwest_Shop.Server\obj\Debug\net8.0\ref\Ostwest_Shop.Server.dll
+C:\Users\kasid\OneDrive\Desktop\Ostwest_Shop\Ostwest_Shop.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

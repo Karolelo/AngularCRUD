@@ -6,13 +6,17 @@ import {CategoryManagmentPageComponent} from './components/category-managment-pa
 import {
   ItemViewPageForClientsComponent
 } from './components/item-view-page-for-clients/item-view-page-for-clients.component';
+import {RegistrationPageComponent} from './components/registration-page/registration-page.component';
+import {LoginPageComponent} from './components/login-page/login-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: AdminDashboardComponent },
   { path: 'dashboard/add-edit-item', component: AddEditItemComponent},
   { path: 'categories', component: CategoryManagmentPageComponent},
-  { path: 'productList', component: ItemViewPageForClientsComponent}
+  { path: 'productList', component: ItemViewPageForClientsComponent},
+  { path: 'register', component: RegistrationPageComponent},
+  {path: 'login',component: LoginPageComponent}
 ];
 
 @NgModule({

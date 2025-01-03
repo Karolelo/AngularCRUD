@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,BehaviorSubject } from 'rxjs';
-import {Product} from '../../../Intefraces/product';
+import { Observable } from 'rxjs';
+import {Product} from '../../Intefraces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +31,5 @@ export class ProductsService {
     return this.http.put<any>(`${this.baseUrl}`, product);
   }
 
-  /*uploadImage(file: File): Observable<ImageData> {
-
-  }*/
 }
 

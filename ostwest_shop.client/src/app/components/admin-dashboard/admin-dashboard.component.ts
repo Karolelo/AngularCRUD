@@ -1,11 +1,10 @@
 import { Component,inject,OnInit } from '@angular/core';
 import {Product} from '../../Intefraces/product';
 import { Router } from '@angular/router';
-import {ProductsService} from './ProductService/products.service';
-import {dataSharingService} from './DataSharingService/data-sharing.service';
 import {Category} from '../../Intefraces/category';
 import {CategoryService} from '../category-managment-page/CategoryService/category.service';
-
+import {ProductsService} from '../../services/ProductService/products.service';
+import {dataSharingService} from '../../services/DataSharingService/data-sharing.service';
 @Component({
   selector: 'app-admin-dashboard',
   standalone: false,
