@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Globalization;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Ostwest_Shop.Server.Interfaces;
 using Ostwest_Shop.Server.Models;
@@ -27,8 +28,9 @@ public class ProductRepository : IProductRepository
         {
             if (includeCategories)
             {
-                return _context.Set<Product>().Include(p => p.Magazine)
-                    .Include(p => p.Categories).ToList();
+                return _context.Set<Product>()
+                    .Include(e => e.Categories)
+                    .Include(e => e.Magazine).ToList();
             }
 
             return _context.Set<Product>().Include(p => p.Magazine).ToList();
@@ -74,10 +76,14 @@ public class ProductRepository : IProductRepository
             UPDATE Product
             SET Name = @Name, Price = @Price
             WHERE ID = @ProductId";
-
+                decimal priceDecimal;
+                if (!Decimal.TryParse(product.Price, NumberStyles.Any, CultureInfo.InvariantCulture, out priceDecimal))
+                {
+                    throw new Exception($"Invalid price format: {product.Price}");
+                }
                 _context.Database.ExecuteSqlRaw(updateProductSql,
                     new SqlParameter("@Name", product.Name),
-                    new SqlParameter("@Price", product.Price),
+                    new SqlParameter("@Price", priceDecimal),
                     new SqlParameter("@ProductId", product.Id));
 
                 string deleteProductCategorySql = @"

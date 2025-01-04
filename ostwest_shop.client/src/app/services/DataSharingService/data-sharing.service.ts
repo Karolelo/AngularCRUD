@@ -16,7 +16,10 @@ export class dataSharingService {
 
   getProduct() {
     const product = this.productSource.getValue();
-    this.productSource.next(null);
+    //this.productSource.next(null);
     return product;
+  }
+  clearService(){
+    this.productSource.next(null)
   }
 }

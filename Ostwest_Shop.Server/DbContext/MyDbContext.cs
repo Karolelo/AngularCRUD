@@ -49,11 +49,11 @@ public partial class MyDbContext : Microsoft.EntityFrameworkCore.DbContext
                     "ProductCategory",
                     r => r.HasOne<Product>().WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("Product_category_Product"),
                     l => l.HasOne<Category>().WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("Product_category_Category"),
                     j =>
                     {

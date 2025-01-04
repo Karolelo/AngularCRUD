@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Ostwest_Shop.Server.DbContext;
 using Ostwest_Shop.Server.DTOs;
@@ -79,10 +80,16 @@ public class ProductController : ControllerBase
             }
         }
 
+        decimal priceDecimal;
+        if (!Decimal.TryParse(productDto.Price, NumberStyles.Any, CultureInfo.InvariantCulture, out priceDecimal))
+        {
+            return BadRequest($"Invalid price format: {productDto.Price}");
+        }
+
         Product product = new Product()
         {
             Name = productDto.Name,
-            Price = productDto.Price,
+            Price = priceDecimal,
             ImgSourcePath = relativeImgPath
         };
 

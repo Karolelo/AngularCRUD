@@ -126,6 +126,7 @@ export class AddEditItemComponent implements OnInit {
         next: (response) => {
           console.log('Produkt został zaktualizowany:');
           this.router.navigate(['dashboard']);
+          this.dataSharingService.clearService();
         },
         error: (err) => {
           console.error('Błąd przy aktualizacji produktu produktu:', err);

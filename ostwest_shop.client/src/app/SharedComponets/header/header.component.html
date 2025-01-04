@@ -2,7 +2,7 @@
   <img [src]="'https://localhost:7200//uploads/Logo.png'" loading="lazy" alt="logo" id="logo">
   <nav id="menu">
     <!--<a href="MainView.html">Strona główna</a>-->
-    <a *ngIf="isAdmin()" routerLink=''>Panel Administracyjny</a>
+    <a *ngIf="isAdmin()" routerLink='/dashboard'>Panel Administracyjny</a>
     <a routerLink='/mainPage'>Strona Główna</a>
     <a routerLink='/productList'>Produkty</a>
     <a *ngIf='!isLoggedIn()' routerLink="/login">Zaloguj</a>

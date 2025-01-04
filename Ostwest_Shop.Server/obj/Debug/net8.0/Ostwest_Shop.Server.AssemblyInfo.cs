@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ostwest_Shop.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ee866327147a3de62d08d7045a317f9695733b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25280021885197ad8a9e3126eb342eed567248ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ostwest_Shop.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ostwest_Shop.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

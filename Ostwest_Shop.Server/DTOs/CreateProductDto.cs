@@ -6,7 +6,7 @@ public class CreateProductDto
 {
         public string Name { get; set; } = null!;
 
-        public decimal Price { get; set; }
+        public string Price { get; set; }
 
         public IFormFile? Img { get; set; }
         

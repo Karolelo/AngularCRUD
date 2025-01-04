@@ -7,6 +7,7 @@ footer {
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
+  max-height: 80px;
   width: 100%;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -17,12 +18,4 @@ footer p {
   font-size: 14px;
 }
 
-/*app-footer a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}*/
 
-footer a:hover {
-  color: #0056b3;
-}

@@ -1,6 +1,8 @@
 <div *ngIf="products?.length; else noProducts">
-  <div *ngFor="let product of products" id="product-list">
-    <app-item-card [product]="product"></app-item-card>
+  <div id="product-list">
+    <div *ngFor="let product of products">
+      <app-item-card [product]="product"></app-item-card>
+    </div>
   </div>
 </div>
 <ng-template #noProducts>
